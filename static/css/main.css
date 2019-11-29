@@ -109,3 +109,19 @@ footer {
   text-align: center;
   margin: 5em;
 }
+
+.grafana {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100em;
+  justify-content: center;
+}
+
+.graphs {
+  background-color: #161719;
+  border-top: 2px orange solid;
+  border-bottom: 2px orange solid;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
