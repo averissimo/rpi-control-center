@@ -39,6 +39,25 @@ body {
   border: 1px #00B3FF solid;
 }
 
+.wifi:hover {
+  background-color: white;
+  color: #4811a4;
+  border: 1px #4811a4 solid;
+}
+
+.wifi {
+  background-color: #4811a4;
+  border: 1px #4811a4 solid;
+}
+
+.wifi svg {
+  fill: white;
+}
+.wifi:hover svg {
+  fill: #4811a4;
+}
+
+
 .off:hover {
   background-color: white;
   color: #D64394;

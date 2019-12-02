@@ -1,6 +1,7 @@
 import subprocess
 import os.path
 import os
+import time
 from pathlib import Path
 from flask import Flask, render_template, redirect, request
 
@@ -12,10 +13,25 @@ file_path = '/home/pi/sht31-rpi/screen_on.txt'
 def index(message = ""):
   return render_template('template.html', message = message, screen = os.path.isfile(file_path))
 
+@app.route('/wifi/')
+def my_wifi():
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'disconnect'])
+  time.sleep(3)
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'reconnect'])
+  return redirect('/wifi_done')
+
+@app.route('/wifi_done/')
+def wifi_done():
+  message = 'O wifi foi reiniciado!'
+  return index(message = message)
+
+@app.route('/reboot/')
+def my_reboot():
+  subprocess.run(['sudo', 'shutdown', '-r', 'now'])
+  return redirect('/bye')
+
 @app.route('/shutdown/')
 def my_shutdown():
-  if os.path.isfile(file_path):
-    os.remove(file_path)
   subprocess.run(['sudo', 'shutdown', '-h', 'now'])
   return redirect('/bye')
 
