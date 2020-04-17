@@ -30,6 +30,16 @@ def my_reboot():
   subprocess.run(['sudo', 'shutdown', '-r', 'now'])
   return redirect('/bye')
 
+@app.route('/shutdown_20/')
+def my_shutdown_20():
+  subprocess.run(['sudo', 'shutdown', '-h', '+20'])
+  return redirect('/bye')
+
+@app.route('/shutdown_120/')
+def my_shutdown_120():
+  subprocess.run(['sudo', 'shutdown', '-h', '+120'])
+  return redirect('/bye')
+
 @app.route('/shutdown/')
 def my_shutdown():
   subprocess.run(['sudo', 'shutdown', '-h', 'now'])
