@@ -11,7 +11,8 @@ file_path = '/home/pi/sht31-rpi/screen_on.txt'
 
 @app.route('/')
 def index(message = ""):
-  return render_template('template.html', message = message, screen = os.path.isfile(file_path))
+  wifi = subprocess.run(['iwgetid', 'wlan1', '-r'], text = True, capture_output = True).stdout.strip()
+  return render_template('template.html', message = message, screen = os.path.isfile(file_path), wifi = wifi)
 
 @app.route('/wifi/')
 def my_wifi():

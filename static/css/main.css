@@ -24,6 +24,14 @@ body {
   font-size: .9em;
 }
 
+.italic {
+  font-style: italic;
+}
+
+.normal {
+  font-weight: normal;
+}
+
 .logo {
   height: 4em;
 }
