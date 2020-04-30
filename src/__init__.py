@@ -14,6 +14,16 @@ def index(message = ""):
   wifi = subprocess.run(['iwgetid', 'wlan1', '-r'], text = True, capture_output = True).stdout.strip()
   return render_template('template.html', message = message, screen = os.path.isfile(file_path), wifi = wifi)
 
+@app.route('/restart_dns/')
+def restart_dns():
+    subprocess.run(['sudo', '-u', 'pi', '/usr/local/bin/docker-compose', '--file', '/home/pi/pihole/docker-compose.yml', 'restart', 'unbound'], capture_output=True)
+    return redirect('/restarted_dns')
+
+@app.route('/restarted_dns/')
+def restarted_dns():
+    message = 'dns restarted, wait a minute...'
+    return index(message = message)
+
 @app.route('/wifi/')
 def my_wifi():
   subprocess.run(['wpa_cli', '-i', 'wlan1', 'disconnect'])
