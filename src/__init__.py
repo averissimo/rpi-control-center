@@ -16,7 +16,7 @@ def index(message = ""):
 
 @app.route('/restart_dns/')
 def restart_dns():
-    subprocess.run(['sudo', '-u', 'pi', '/usr/local/bin/docker-compose', '--file', '/home/pi/pihole/docker-compose.yml', 'restart', 'unbound'], capture_output=True)
+    subprocess.run(['sudo', '-u', 'pi', '/usr/local/bin/docker-compose', '--file', '/home/pi/pihole/docker-compose.yml', 'restart'], capture_output=True)
     return redirect('/restarted_dns')
 
 @app.route('/restarted_dns/')

@@ -39,7 +39,7 @@ body {
 .screen:hover {
   background-color: white;
   color: #00B3FF;
-  border: 1px #00B3FF solid;
+  border: 1px white solid;
 }
 
 .screen {
@@ -50,12 +50,23 @@ body {
 .wifi:hover {
   background-color: white;
   color: #4811a4;
-  border: 1px #4811a4 solid;
+  border: 1px white solid;
 }
 
 .wifi {
   background-color: #4811a4;
   border: 1px #4811a4 solid;
+}
+
+.pihole:hover {
+  background-color: white;
+  color: #330033;
+  border: 1px white solid;
+}
+
+.pihole {
+  background-color: #330033;
+  border: 1px #330033 solid;
 }
 
 .wifi svg {
@@ -69,7 +80,7 @@ body {
 .off:hover {
   background-color: white;
   color: #D64394;
-  border: 1px #D64394 solid;
+  border: 1px white solid;
 }
 
 .off {
