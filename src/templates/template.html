@@ -16,7 +16,7 @@
       <span>{{ message }}</span>
     </h4>
     
-    <h4>{% if wifi != "" %}<span class="normal italic gray small">Wifi connected to: </span>{{ wifi }} 🔥 {% else %} <span class="small gray">Wifi not connected 🙁</span>{% endif %}</h4>
+    <h4>{% if wifi != "" %}<span class="normal italic gray small">Wifi connected to: </span>{{ wifi }} 🔥 <span clas="normal italic small">({{ ap }})</span> <span class="small gray normal italic">{{bitrate}}</span> {% else %} <span class="small gray">Wifi not connected 🙁</span>{% endif %}</h4>
     <ul class="links">
       <li>
         <a class="off" href="/shutdown/">

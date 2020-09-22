@@ -4,6 +4,7 @@ import os
 import time
 from pathlib import Path
 from flask import Flask, render_template, redirect, request
+import re
 
 app = Flask(__name__)
 
@@ -12,7 +13,14 @@ file_path = '/home/pi/sht31-rpi/screen_on.txt'
 @app.route('/')
 def index(message = ""):
   wifi = subprocess.run(['iwgetid', 'wlan1', '-r'], text = True, capture_output = True).stdout.strip()
-  return render_template('template.html', message = message, screen = os.path.isfile(file_path), wifi = wifi)
+  bitrate = ''
+  with open('/proc/net/wireless', 'r') as f:
+    for line in f.readlines():
+        if 'wlan1' in line:
+            bitrate = line.split()[2:4]
+            bitrate = 'quality: ' + bitrate[0] + ' signal: ' + bitrate[1] + 'dBm'
+  ap = subprocess.run(['iwgetid', '-a', '-r', 'wlan1'], text = True, capture_output = True).stdout.strip()
+  return render_template('template.html', message = message, screen = os.path.isfile(file_path), wifi = wifi, ap = ap, bitrate = bitrate)
 
 @app.route('/restart_dns/')
 def restart_dns():
@@ -29,6 +37,7 @@ def my_wifi():
   subprocess.run(['wpa_cli', '-i', 'wlan1', 'disconnect'])
   time.sleep(3)
   subprocess.run(['wpa_cli', '-i', 'wlan1', 'reconnect'])
+  subprocess.run(['sudo', '-u', 'pi', '/usr/local/bin/docker-compose', '--file', '/home/pi/pihole/docker-compose.yml', 'restart'], capture_output=True)
   return redirect('/wifi_done')
 
 @app.route('/wifi_done/')
