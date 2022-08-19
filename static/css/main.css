@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 3em;
+  padding-bottom: 5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+  background-color: rgb(36, 39, 41);
+  color: white;
+}
+
+.gray {
+  color: #777;
+}
+
+.small {
+  font-size: .9em;
+}
+
+.message {
+  color: #D64394;
+  font-style: italic;
+  padding-left: 2em;
+  font-size: .9em;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.logo {
+  height: 4em;
+}
+
+.screen:hover {
+  background-color: white;
+  color: #00B3FF;
+  border: 1px white solid;
+}
+
+.screen {
+  background-color: #00B3FF;
+  border: 1px #00B3FF solid;
+}
+
+.wifi:hover {
+  background-color: white;
+  color: #4811a4;
+  border: 1px white solid;
+}
+
+.wifi {
+  background-color: #4811a4;
+  border: 1px #4811a4 solid;
+}
+
+.pihole:hover {
+  background-color: white;
+  color: #330033;
+  border: 1px white solid;
+}
+
+.pihole {
+  background-color: #330033;
+  border: 1px #330033 solid;
+}
+
+.wifi svg {
+  fill: white;
+}
+.wifi:hover svg {
+  fill: #4811a4;
+}
+
+
+.off:hover {
+  background-color: white;
+  color: #D64394;
+  border: 1px white solid;
+}
+
+.off {
+  background-color: #D64394;
+  border: 1px #D64394 solid;
+}
+
+h2 {
+ display: flex;
+ align-items:center;
+}
+
+ul.links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.links li {
+  padding: 1em;
+  list-style: none;
+}
+
+a:hover {
+  background-color: #e7e7e7; /* Green */
+  color: #4CAF50;
+  border: 1px #4CAF50 solid;
+}
+
+a svg {
+  height: 1.3em;
+  fill: white;
+  padding-right: .2em;
+}
+
+a:hover svg {
+  fill: #4CAF50;
+}
+
+a.off:hover svg {
+  fill: #D64394;
+}
+
+a.screen:hover svg {
+  fill: #00B3FF;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #4CAF50; /* Green */
+  border: 1px #4CAF50 solid;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 700;
+} 
+
+.center {
+  margin: auto;
+  max-width: 50em;
+}
+
+footer {
+  color: #777;
+  text-align: center;
+  margin: 5em;
+}
+
+.grafana {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100em;
+  justify-content: center;
+}
+
+.graphs {
+  background-color: #161719;
+  border-top: 2px orange solid;
+  border-bottom: 2px orange solid;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
