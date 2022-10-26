@@ -31,6 +31,8 @@ file_path = '/home/pi/work/monitor/sensors-sht31/screen_on.txt'
 def is_netgear_activated():
   return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', '5', 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
 
+def is_netgear_activated_5():
+  return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', '4', 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
 
 @app.route('/')
 def index(message = ""):
@@ -54,6 +56,7 @@ def index(message = ""):
           bitrate = bitrate, 
           channel = ch, 
           netgear = is_netgear_activated(),
+          netgear_5 = is_netgear_activated_5(),
           ip = ip
   )
 
@@ -69,8 +72,7 @@ def restarted_dns():
 
 @app.route('/select_mlan/')
 def select_mlan():
-  if is_netgear_activated():
-      subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '7'])
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '7'])
   return redirect('/mlan_selected')
 
 @app.route('/mlan_selected/')
@@ -80,13 +82,22 @@ def mlan_selected():
 
 @app.route('/select_eduroam/')
 def select_eduroam():
-  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '2'])
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '1'])
   return redirect('/eduroam_selected')
 
 @app.route('/eduroam_selected/')
 def eduroam_selected():
   message = 'eduroam was selected'
   return index(message = message)
+
+# 5GHz is network number 4 on wpa_supplicant
+@app.route('/toggle_netgear_5/')
+def toggle_netgear_5():
+  if is_netgear_activated():
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'disable', '4'])
+  else:
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'enable', '4'])
+  return redirect('/netgear_toggled')
 
 @app.route('/toggle_netgear/')
 def toggle_netgear():
