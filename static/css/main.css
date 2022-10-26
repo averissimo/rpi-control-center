@@ -121,22 +121,25 @@ a:hover {
   border: 1px #4CAF50 solid;
 }
 
-a svg {
+a svg, a img.aux {
   height: 1.3em;
-  fill: white;
+  filter: invert(100%);
   padding-right: .2em;
 }
 
-a:hover svg {
-  fill: #4CAF50;
+a:hover svg, a:hover img.aux {
+  filter: invert(55%) sepia(65%) saturate(436%) hue-rotate(73deg) brightness(95%) contrast(82%);
+  /* fill: #4CAF50; */
 }
 
-a.off:hover svg {
-  fill: #D64394;
+a.off:hover svg, a.off:hover img.aux {
+  filter: invert(40%) sepia(50%) saturate(3020%) hue-rotate(302deg) brightness(89%) contrast(87%);
+  /* fill: #D64394; */
 }
 
-a.screen:hover svg {
-  fill: #00B3FF;
+a.screen:hover svg, a.screen:hover img.aux {
+  filter: invert(49%) sepia(93%) saturate(1284%) hue-rotate(164deg) brightness(97%) contrast(110%);
+  /* fill: #00B3FF; */
 }
 
 a {
@@ -179,3 +182,4 @@ footer {
   margin-top: 3em;
   margin-bottom: 3em;
 }
+
