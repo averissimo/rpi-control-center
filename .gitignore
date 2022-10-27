@@ -1,3 +1,4 @@
 env/
 *.pyc
 html-functions.sock
+static/css/
