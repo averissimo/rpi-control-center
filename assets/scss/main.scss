@@ -1,0 +1,233 @@
+/* color variables */
+
+$gray: #CCC;
+$red: #D64394;
+$purple: #4811a4;
+$darkpurple: #330033;
+$orange: #ff6f1d;
+$darkorange: #D64324;
+$blue: #00B3FF;
+$green: #4CAF50;
+
+$bordersize: 1px;
+
+/* ****************** */
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 3em;
+  padding-bottom: 5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+  background-color: rgb(36, 39, 41);
+  color: white;
+}
+
+.gray {
+  color: $gray
+}
+
+.small {
+  font-size: .9em;
+}
+
+.message {
+  color: #D64394;
+  font-style: italic;
+  padding-left: 2em;
+  font-size: .9em;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.logo {
+  height: 4em;
+}
+
+.center {
+  margin: auto;
+  max-width: 50em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+footer {
+  color: #777;
+  text-align: center;
+  margin: 5em;
+}
+
+.grafana {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100em;
+  justify-content: center;
+}
+
+.graphs {
+  background-color: #161719;
+  border-top: 2px orange solid;
+  border-bottom: 2px orange solid;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+h2 {
+  display: flex;
+  align-items:center;
+
+  a {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+ul.links {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+
+  li {
+    padding: .5em;
+    list-style: none;
+
+    a {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      background-color: #4CAF50; /* Green */
+      border: 1px #4CAF50 solid;
+      color: white;
+      padding: 0px 15px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 700;
+      height: 48px;
+      justify-content: flex-start;
+
+      svg {
+        fill: #ffffff;
+      }
+
+      &:hover {
+        background-color: #e7e7e7; /* Green */
+        color: #4CAF50;
+        border: 1px #4CAF50 solid;
+
+        svg {
+          fill: #4CAF50;
+        }
+      }
+
+      &.screen {
+        background-color: $blue;
+        border: $bordersize $blue solid;
+
+        &:hover {
+          background-color: white;
+          color: $blue;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $blue;
+          }
+        }
+      }
+
+      &.pihole {
+        background-color: $darkpurple;
+        border: $bordersize $darkpurple solid;
+
+        &:hover {
+          background-color: white;
+          color: $darkpurple;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $darkpurple;
+          }
+        }
+      }
+
+      &.wifi {
+        background-color: $purple;
+        border: $bordersize $purple solid;
+
+        &:hover {
+          background-color: white;
+          color: $purple;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $purple;
+          }
+        }
+      }
+
+      &.off {
+        background-color: $red;
+        border: $bordersize $red solid;
+
+        &:hover {
+          background-color: white;
+          color: $red;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $red;
+          }
+        }
+      }
+
+      &.netgear.off-netgear {
+        background-color: $darkorange;
+        border: $bordersize $darkorange solid;
+
+        &:hover {
+          background-color: white;
+          color: $darkorange;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $darkorange;
+          }
+        }
+      }
+
+      &.netgear {
+        background-color: $orange;
+        border: $bordersize $orange solid;
+
+        &:hover {
+          background-color: white;
+          color: $orange;
+          border: $bordersize white solid;
+
+          & svg {
+            fill: $orange;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

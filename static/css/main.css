@@ -1,3 +1,5 @@
+/* color variables */
+/* ****************** */
 body {
   margin: 0;
   padding: 0;
@@ -5,210 +7,148 @@ body {
   padding-bottom: 5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #444;
-  background-color: rgb(36, 39, 41);
-  color: white;
-}
+  background-color: #242729;
+  color: white; }
 
 .gray {
-  color: #CCC;
-}
+  color: #CCC; }
 
 .small {
-  font-size: .9em;
-}
+  font-size: .9em; }
 
 .message {
   color: #D64394;
   font-style: italic;
   padding-left: 2em;
-  font-size: .9em;
-}
+  font-size: .9em; }
 
 .italic {
-  font-style: italic;
-}
+  font-style: italic; }
 
 .normal {
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .logo {
-  height: 4em;
-}
-
-.screen:hover {
-  background-color: white;
-  color: #00B3FF;
-  border: 1px white solid;
-}
-
-.screen {
-  background-color: #00B3FF;
-  border: 1px #00B3FF solid;
-}
-
-.wifi:hover {
-  background-color: white;
-  color: #4811a4;
-  border: 1px white solid;
-}
-
-.wifi {
-  background-color: #4811a4;
-  border: 1px #4811a4 solid;
-}
-
-.pihole:hover {
-  background-color: white;
-  color: #330033;
-  border: 1px white solid;
-}
-
-.pihole {
-  background-color: #330033;
-  border: 1px #330033 solid;
-}
-
-.wifi svg {
-  fill: white;
-}
-.wifi:hover svg {
-  fill: #4811a4;
-}
-
-.netgear:hover {
-  background-color: white;
-  color: #ff6f1d;
-  border: 1px white solid;
-}
-
-.netgear {
-  background-color: #ff6f1d;
-  border: 1px #ff6f1d solid;
-}
-
-a.netgear:hover svg {
-  fill: #ff6f1d;
-}
-
-.off-netgear:hover {
-  background-color: white;
-  color: #D64324;
-  border: 1px white solid;
-}
-
-.off-netgear {
-  background-color: #D64324;
-  border: 1px #D64324 solid;
-}
-
-a.off-netgear:hover svg {
-  fill: #D64324;
-}
-
-
-.off:hover {
-  background-color: white;
-  color: #D64394;
-  border: 1px white solid;
-}
-
-.off {
-  background-color: #D64394;
-  border: 1px #D64394 solid;
-}
-
-h2 {
- display: flex;
- align-items:center;
-}
-
-ul.links {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.links li {
-  padding: .5em;
-  list-style: none;
-}
-
-h2 a:hover {
-  background-color: transparent;
-  border: none;
-}
-
-h2 a {
-  background-color: transparent;
-  border: none;
-  padding: 0px;
-}
-
-
-a:hover {
-  background-color: #e7e7e7; /* Green */
-  color: #4CAF50;
-  border: 1px #4CAF50 solid;
-}
-
-a svg {
-  fill: #ffffff;
-}
-
-a:hover svg {
-  fill: #4CAF50;
-}
-
-a.off:hover svg {
-  filter: invert(40%) sepia(50%) saturate(3020%) hue-rotate(302deg) brightness(89%) contrast(87%);
-  fill: #D64394;
-}
-
-
-a.screen:hover svg {
-  fill: #00B3FF;
-}
-
-a {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  background-color: #4CAF50; /* Green */
-  border: 1px #4CAF50 solid;
-  color: white;
-  padding: 0px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1.1em;
-  font-weight: 700;
-  height: 48px;
-  justify-content: flex-start;
-} 
+  height: 4em; }
 
 .center {
   margin: auto;
   max-width: 50em;
-}
+  padding-left: 1em;
+  padding-right: 1em; }
 
 footer {
   color: #777;
   text-align: center;
-  margin: 5em;
-}
+  margin: 5em; }
 
 .grafana {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   max-width: 100em;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .graphs {
   background-color: #161719;
   border-top: 2px orange solid;
   border-bottom: 2px orange solid;
   margin-top: 3em;
-  margin-bottom: 3em;
-}
+  margin-bottom: 3em; }
 
+h2 {
+  display: flex;
+  align-items: center; }
+  h2 a {
+    background-color: transparent;
+    border: none;
+    padding: 0px; }
+    h2 a:hover {
+      background-color: transparent;
+      border: none; }
+
+ul.links {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px; }
+  ul.links li {
+    padding: .5em;
+    list-style: none; }
+    ul.links li a {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      /* Green */
+      border: 1px #4CAF50 solid;
+      color: white;
+      padding: 0px 15px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 700;
+      height: 48px;
+      justify-content: flex-start; }
+      ul.links li a svg {
+        fill: #ffffff; }
+      ul.links li a:hover {
+        background-color: #e7e7e7;
+        /* Green */
+        color: #4CAF50;
+        border: 1px #4CAF50 solid; }
+        ul.links li a:hover svg {
+          fill: #4CAF50; }
+      ul.links li a.screen {
+        background-color: #00B3FF;
+        border: 1px #00B3FF solid; }
+        ul.links li a.screen:hover {
+          background-color: white;
+          color: #00B3FF;
+          border: 1px white solid; }
+          ul.links li a.screen:hover svg {
+            fill: #00B3FF; }
+      ul.links li a.pihole {
+        background-color: #330033;
+        border: 1px #330033 solid; }
+        ul.links li a.pihole:hover {
+          background-color: white;
+          color: #330033;
+          border: 1px white solid; }
+          ul.links li a.pihole:hover svg {
+            fill: #330033; }
+      ul.links li a.wifi {
+        background-color: #4811a4;
+        border: 1px #4811a4 solid; }
+        ul.links li a.wifi:hover {
+          background-color: white;
+          color: #4811a4;
+          border: 1px white solid; }
+          ul.links li a.wifi:hover svg {
+            fill: #4811a4; }
+      ul.links li a.off {
+        background-color: #D64394;
+        border: 1px #D64394 solid; }
+        ul.links li a.off:hover {
+          background-color: white;
+          color: #D64394;
+          border: 1px white solid; }
+          ul.links li a.off:hover svg {
+            fill: #D64394; }
+      ul.links li a.netgear.off-netgear {
+        background-color: #D64324;
+        border: 1px #D64324 solid; }
+        ul.links li a.netgear.off-netgear:hover {
+          background-color: white;
+          color: #D64324;
+          border: 1px white solid; }
+          ul.links li a.netgear.off-netgear:hover svg {
+            fill: #D64324; }
+      ul.links li a.netgear {
+        background-color: #ff6f1d;
+        border: 1px #ff6f1d solid; }
+        ul.links li a.netgear:hover {
+          background-color: white;
+          color: #ff6f1d;
+          border: 1px white solid; }
+          ul.links li a.netgear:hover svg {
+            fill: #ff6f1d; }
