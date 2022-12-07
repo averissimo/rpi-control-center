@@ -10,6 +10,8 @@ import socket # ip
 import fcntl # ip
 import struct # ip
 
+from framboesa import Framboesa
+
 def get_ip_address(ifname):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -28,17 +30,27 @@ app = Flask(__name__)
 
 file_path = '/home/pi/work/monitor/sensors-sht31/screen_on.txt'
 
+NETGEAR_5GHZ_IX = '4'
+NETGEAR_2_4GHZ_IX = '5'
+EDUROAM_IX = '1'
+MWLAN_IX = '7'
+
 def is_netgear_activated():
-  return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', '5', 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
+  return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', NETGEAR_2_4GHZ_IX, 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
 
 def is_netgear_activated_5():
-  return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', '4', 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
+  return subprocess.run(['wpa_cli', '-i', 'wlan1', 'get_network', NETGEAR_5GHZ_IX, 'disabled'], text = True, capture_output = True).stdout.strip() == "0"
 
 @app.route('/')
 def index(message = ""):
   wifi = subprocess.run(['iwgetid', 'wlan1', '-r'], text = True, capture_output = True).stdout.strip()
   ip = get_ip_address('wlan1')
   bitrate = ''
+  
+  f = Framboesa("framboesa", "monitor", "seQ9Wt_uUUCe42KSeBLXSWwIXXvNxbgnApU3aTv3VXxrnbxZgxQNdms0xjbbKxQWa50V8vaULF_GSfYcDRd98Q==")
+  humidity = f.get_humidity()
+  temperature = f.get_temperature()
+  
   with open('/proc/net/wireless', 'r') as f:
     for line in f.readlines():
         if 'wlan1' in line:
@@ -57,6 +69,8 @@ def index(message = ""):
           channel = ch, 
           netgear = is_netgear_activated(),
           netgear_5 = is_netgear_activated_5(),
+          humidity = round(humidity['value'], 1),
+          temperature = round(temperature['value'], 1),
           ip = ip
   )
 
@@ -72,7 +86,7 @@ def restarted_dns():
 
 @app.route('/select_mlan/')
 def select_mlan():
-  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '7'])
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', MWLAN_IX])
   return redirect('/mlan_selected')
 
 @app.route('/mlan_selected/')
@@ -82,8 +96,13 @@ def mlan_selected():
 
 @app.route('/select_eduroam/')
 def select_eduroam():
-  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', '1'])
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'select', EDUROAM_IX])
   return redirect('/eduroam_selected')
+
+@app.route('/reattach')
+def reattach():
+  subprocess.run(['wpa_cli', '-i', 'wlan1', 'reattach'])
+  return index(message = 'framboesa will attempt to reconnect to a wifi spot')
 
 @app.route('/eduroam_selected/')
 def eduroam_selected():
@@ -93,18 +112,18 @@ def eduroam_selected():
 # 5GHz is network number 4 on wpa_supplicant
 @app.route('/toggle_netgear_5/')
 def toggle_netgear_5():
-  if is_netgear_activated():
-      subprocess.run(['wpa_cli', '-i', 'wlan1', 'disable', '4'])
+  if is_netgear_activated_5():
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'disable', NETGEAR_5GHZ_IX])
   else:
-      subprocess.run(['wpa_cli', '-i', 'wlan1', 'enable', '4'])
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'enable', NETGEAR_5GHZ_IX])
   return redirect('/netgear_toggled')
 
 @app.route('/toggle_netgear/')
 def toggle_netgear():
   if is_netgear_activated():
-      subprocess.run(['wpa_cli', '-i', 'wlan1', 'disable', '5'])
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'disable', NETGEAR_2_4GHZ_IX])
   else:
-      subprocess.run(['wpa_cli', '-i', 'wlan1', 'enable', '5'])
+      subprocess.run(['wpa_cli', '-i', 'wlan1', 'enable', NETGEAR_2_4GHZ_IX])
   return redirect('/netgear_toggled')
 
 @app.route('/netgear_toggled/')
@@ -142,7 +161,7 @@ def wifi_done():
 
 @app.route('/reboot/')
 def my_reboot():
-  subprocess.run(['sudo', 'shutdown', '-r', 'now'])
+  subprocess.Popen(['sudo', 'shutdown', '-r', 'now'])
   return redirect('/bye')
 
 @app.route('/shutdown_20/')

@@ -1,7 +1,7 @@
 /* color variables */
 
 $gray: #CCC;
-$red: #D64394;
+$red: #990F02;/*#D64394;*/
 $purple: #4811a4;
 $darkpurple: #330033;
 $orange: #ff6f1d;
@@ -13,13 +13,20 @@ $bordersize: 1px;
 
 /* ****************** */
 
+@media screen and (min-width: 768px) {
+  body { padding-top: 3em; }
+}
+
+@media (max-width: 768px) {
+  body { padding-top: 0em; }
+}
+
 body {
   margin: 0;
-  padding: 0;
-  padding-top: 3em;
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: 5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
   background-color: rgb(36, 39, 41);
   color: white;
 }
@@ -102,7 +109,7 @@ ul.links {
   padding: 0px;
 
   li {
-    padding: .5em;
+    padding: .3em;
     list-style: none;
 
     a {
@@ -112,7 +119,7 @@ ul.links {
       background-color: #4CAF50; /* Green */
       border: 1px #4CAF50 solid;
       color: white;
-      padding: 0px 15px;
+      padding: 0px 12px;
       text-align: center;
       text-decoration: none;
       font-size: 1.1em;
